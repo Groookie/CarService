@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface SampleRepository extends JpaRepository<Sample, Long> {
 
-    public List<Sample> findByName(String name);
+    List<Sample> findByName(String name);
 
 }

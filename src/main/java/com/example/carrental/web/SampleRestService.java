@@ -13,8 +13,10 @@ import java.util.List;
 public class SampleRestService {
 
     private List<Sample> samples = new ArrayList<Sample>();
+
     @Autowired
     private SampleService sampleService;
+
     public SampleRestService() {
     }
 

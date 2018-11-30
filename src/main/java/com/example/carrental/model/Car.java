@@ -1,4 +1,6 @@
-package com.example.carrental;
+package com.example.carrental.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ public class Car {
 	private String plateNumber;
 	private String brand;
 	private int price;
+	private boolean rented;
 	
 	public Car() {
 		super();
@@ -22,6 +25,7 @@ public class Car {
 		this.plateNumber = plateNumber;
 		this.brand = brand;
 		this.price = price;
+		this.rented = false;
 	}
 
 	public Long getId() {
@@ -54,6 +58,32 @@ public class Car {
 	
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public boolean isRented() {
+		return rented;
+	}
+
+	public void setRented(boolean rented) {
+		this.rented = rented;
+	}
+
+	public boolean rentCar() {
+		if (rented) {
+			return false;
+		}
+
+		rented = true;
+		return rented;
+	}
+	@JsonIgnore
+	public boolean getBackCar() {
+		if (!rented) {
+			return false;
+		}
+
+		rented = false;
+		return !rented;
 	}
 
 	@Override
