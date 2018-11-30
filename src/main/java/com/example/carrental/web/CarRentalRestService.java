@@ -55,10 +55,10 @@ public class CarRentalRestService {
     }
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/cars", method = RequestMethod.POST)
+	@RequestMapping(value = "/cars", method = RequestMethod.POST, produces = "application/json")
 	@ResponseStatus(HttpStatus.OK)
-	public void addCar(@RequestBody Car car) throws Exception{
-		carService.save(car);
+	public ResponseEntity<Car> addCar(@RequestBody Car car) throws Exception{
+		return ResponseEntity.ok(carService.save(car));
 	}
 
 }
